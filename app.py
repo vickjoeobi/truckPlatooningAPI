@@ -95,22 +95,22 @@ def predict(data: request_body):
 
     # Return the max rating
     if rating1 > rating2 and rating1 > rating3:
-        return {
+        return [[{
             'TruckName': data.TruckName,
             'Rating': rating1
-        }
+        }]]
     elif rating2 > rating1 and rating2 > rating3:
-        return {
+        return [[{
             'TruckName': data.TruckName2,
             'Rating': rating2
-        }
+        }]]
     elif rating3 > rating1 and rating3 > rating2:
-        return {
+        return [[{
             'TruckName': data.TruckName3,
             'Rating': rating3
-        }
+        }]]
     else:
-        return {
+        return [[{
             'TruckName': data.TruckName,
             'Rating': rating1
-        }
+        }]]
