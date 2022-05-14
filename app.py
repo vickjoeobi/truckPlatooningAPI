@@ -4,7 +4,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.impute import SimpleImputer
 import pandas as pd
 from pydantic import BaseModel
-import gunicorn
 
 # Creating FastAPI instance
 app = FastAPI()
