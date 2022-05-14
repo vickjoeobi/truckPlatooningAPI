@@ -24,7 +24,7 @@ traitlets==5.1.1
 uvicorn==0.12.0
 websockets==8.1
 wrapt==1.11.2
-starlette==0.12.1
+starlette==0.13.6
 fastapi==0.61.0
 astroid==2.3.3
 click==7.0
