@@ -62,28 +62,28 @@ def predict(data: request_body):
         data.Body_Characteristics,
         data.Equipment_Sensors,
         data.Efficiency,
-    ],
-    [
-        data.Distance_Covered2,
-        data.Match_of_Route2,
-        data.Fuel_Consumption2,
-        data.Body_Characteristics2,
-        data.Equipment_Sensors2,
-        data.Efficiency2,
-    ],
-    [
-        data.Distance_Covered3,
-        data.Match_of_Route3,
-        data.Fuel_Consumption3,
-        data.Body_Characteristics3,
-        data.Equipment_Sensors3,
-        data.Efficiency3,
+    ]]
+    test_data2 = [[
+        data.Distance_Covered,
+        data.Match_of_Route,
+        data.Fuel_Consumption,
+        data.Body_Characteristics,
+        data.Equipment_Sensors,
+        data.Efficiency,
+    ]]
+    test_data3 = [[
+        data.Distance_Covered,
+        data.Match_of_Route,
+        data.Fuel_Consumption,
+        data.Body_Characteristics,
+        data.Equipment_Sensors,
+        data.Efficiency,
     ]]
 
     # Making the prediction
-    result1 = clf.predict(test_data[0])[0]
-    result2 = clf.predict(test_data[1])[0]
-    result3 = clf.predict(test_data[2])[0]
+    result1 = clf.predict(test_data)[0]
+    result2 = clf.predict(test_data2)[0]
+    result3 = clf.predict(test_data3)[0]
     
     # Map the prediction to the rating
     
