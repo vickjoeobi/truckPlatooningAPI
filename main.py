@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-import uvicorn
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.impute import SimpleImputer
 import pandas as pd
