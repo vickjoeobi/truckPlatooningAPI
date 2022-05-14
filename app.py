@@ -81,9 +81,9 @@ def predict(data: request_body):
     ]]
 
     # Making the prediction
-    result1 = clf.predict(test_data[0])
-    result2 = clf.predict(test_data[1])
-    result3 = clf.predict(test_data[2])
+    result1 = clf.predict(test_data)[0]
+    result2 = clf.predict(test_data)[1]
+    result3 = clf.predict(test_data)[2]
     
     # Map the prediction to the rating
     
