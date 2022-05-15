@@ -86,19 +86,16 @@ def predict(data: request_body):
     result3 = clf.predict(test_data3)[0]
     
     # Map the prediction to the rating
-    
-    rating1 = 4 if result1[0] == 'Highest' else 3 if result1[0] == 'High' else 2 if result1[0] == 'low' else 1 if result1[0] == 'lowest' else 0
-    rating2 = 4 if result1[0] == 'Highest' else 3 if result1[
-        0] == 'High' else 2 if result1[0] == 'low' else 1 if result1[0] == 'lowest' else 0
-    rating3 = 4 if result1[0] == 'Highest' else 3 if result1[
-        0] == 'High' else 2 if result1[0] == 'low' else 1 if result1[0] == 'lowest' else 0
+    rating1 = 4 if result1 == 'Highest' else 3 if result1 == 'High' else 2 if result1 == 'low' else 1 if result1[0] == 'lowest' else 0
+    rating2 = 4 if result1 == 'Highest' else 3 if result1 == 'High' else 2 if result1 == 'low' else 1 if result1 == 'lowest' else 0
+    rating3 = 4 if result1 == 'Highest' else 3 if result1 == 'High' else 2 if result1 == 'low' else 1 if result1  == 'lowest' else 0
 
     # Return the max rating
     if rating1 > rating2 and rating1 > rating3:
-        return result1
+        return data.TruckName + ':' + ' ' + result1 
     elif rating2 > rating1 and rating2 > rating3:
-        return result2
+        return data.TruckName2 + ':' + ' ' + result2
     elif rating3 > rating1 and rating3 > rating2:
-        return result3
+        return data.TruckName3 + ':' + ' ' + result3
     else:
-        return result1
+        return data.TruckName + ':' + ' ' + result1
