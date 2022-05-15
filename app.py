@@ -26,26 +26,26 @@ app.add_middleware(
 
 class request_body(BaseModel):
     TruckName: str
-    Distance_Covered: int
-    Match_of_Route: int
-    Fuel_Consumption: int
-    Body_Characteristics: int
-    Equipment_Sensors: int
-    Efficiency: int
+    Distance_Covered: str
+    Match_of_Route: str
+    Fuel_Consumption: str
+    Body_Characteristics: str
+    Equipment_Sensors: str
+    Efficiency: str
     TruckName2: str
-    Distance_Covered2: int
-    Match_of_Route2: int
-    Fuel_Consumption2: int
-    Body_Characteristics2: int
-    Equipment_Sensors2: int
-    Efficiency2: int
+    Distance_Covered2: str
+    Match_of_Route2: str
+    Fuel_Consumption2: str
+    Body_Characteristics2: str
+    Equipment_Sensors2: str
+    Efficiency2: str
     TruckName3: str
-    Distance_Covered3: int
-    Match_of_Route3: int
-    Fuel_Consumption3: int
-    Body_Characteristics3: int
-    Equipment_Sensors3: int
-    Efficiency3: int
+    Distance_Covered3: str
+    Match_of_Route3: str
+    Fuel_Consumption3: str
+    Body_Characteristics3: str
+    Equipment_Sensors3: str
+    Efficiency3: str
 
 
 # Loading Dataset
@@ -69,30 +69,51 @@ clf.fit(X, Y)
 
 @app.post('/predict')
 def predict(data: request_body):
+    
+    # converting the data to int individually
+    Disatnce_Covered = int(data.Distance_Covered)
+    Match_of_Route = int(data.Match_of_Route)
+    Fuel_Consumption = int(data.Fuel_Consumption)
+    Body_Characteristics = int(data.Body_Characteristics)
+    Equipment_Sensors = int(data.Equipment_Sensors)
+    Efficiency = int(data.Efficiency)
+    Disatnce_Covered2 = int(data.Distance_Covered2)
+    Match_of_Route2 = int(data.Match_of_Route2)
+    Fuel_Consumption2 = int(data.Fuel_Consumption2)
+    Body_Characteristics2 = int(data.Body_Characteristics2)
+    Equipment_Sensors2 = int(data.Equipment_Sensors2)
+    Efficiency2 = int(data.Efficiency2)
+    Disatnce_Covered3 = int(data.Distance_Covered3)
+    Match_of_Route3 = int(data.Match_of_Route3)
+    Fuel_Consumption3 = int(data.Fuel_Consumption3)
+    Body_Characteristics3 = int(data.Body_Characteristics3)
+    Equipment_Sensors3 = int(data.Equipment_Sensors3)
+    Efficiency3 = int(data.Efficiency3)
+    
     # Making the data in a form suitable for prediction
     test_data = [[
-        data.Distance_Covered,
-        data.Match_of_Route,
-        data.Fuel_Consumption,
-        data.Body_Characteristics,
-        data.Equipment_Sensors,
-        data.Efficiency,
+        Disatnce_Covered,
+        Match_of_Route,
+        Fuel_Consumption,
+        Body_Characteristics,
+        Equipment_Sensors,
+        Efficiency
     ]]
     test_data2 = [[
-        data.Distance_Covered2,
-        data.Match_of_Route2,
-        data.Fuel_Consumption2,
-        data.Body_Characteristics2,
-        data.Equipment_Sensors2,
-        data.Efficiency2,
+        Disatnce_Covered2,
+        Match_of_Route2,
+        Fuel_Consumption2,
+        Body_Characteristics2,
+        Equipment_Sensors2,
+        Efficiency2
     ]]
     test_data3 = [[
-        data.Distance_Covered3,
-        data.Match_of_Route3,
-        data.Fuel_Consumption3,
-        data.Body_Characteristics3,
-        data.Equipment_Sensors3,
-        data.Efficiency3,
+        Disatnce_Covered3,
+        Match_of_Route3,
+        Fuel_Consumption3,
+        Body_Characteristics3,
+        Equipment_Sensors3,
+        Efficiency3
     ]]
 
     # Making the prediction
