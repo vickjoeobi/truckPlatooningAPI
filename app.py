@@ -70,6 +70,17 @@ clf.fit(X, Y)
 @app.post('/predict')
 def predict(data: request_body):
     
+    # save data.truckname to a variable
+    truckname = data.TruckName
+    truckname2 = data.TruckName2
+    truckname3 = data.TruckName3
+    
+    # check if the data is empty else make it a 0 else convert to int
+    for i in data.__dict__.values():
+        if i == '':
+            i = 0
+    
+    
     # converting the data to int individually
     Disatnce_Covered = int(data.Distance_Covered)
     Match_of_Route = int(data.Match_of_Route)
@@ -89,6 +100,7 @@ def predict(data: request_body):
     Body_Characteristics3 = int(data.Body_Characteristics3)
     Equipment_Sensors3 = int(data.Equipment_Sensors3)
     Efficiency3 = int(data.Efficiency3)
+    
     
     # Making the data in a form suitable for prediction
     test_data = [[
@@ -161,10 +173,10 @@ def predict(data: request_body):
 
     # Return the max rating
     if (rating1 >= rating2) and (rating1 >= rating3):
-        return data.TruckName + ':' + ' ' + result1
+        return truckname + ':' + ' ' + result1
     elif (rating2 >= rating1) and (rating2 > rating3):
-        return data.TruckName2 + ':' + ' ' + result2
+        return truckname2 + ':' + ' ' + result2
     elif (rating3 >= rating1) and (rating3 >= rating2):
-        return data.TruckName3 + ':' + ' ' + result3
+        return truckname3 + ':' + ' ' + result3
     else:
-        return data.TruckName + ':' + ' ' + result1
+        return truckname + ':' + ' ' + result1
