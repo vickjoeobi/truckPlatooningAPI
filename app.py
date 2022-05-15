@@ -125,10 +125,10 @@ def predict(data: request_body):
 
     # Return the max rating
     if (rating1 >= rating2) and (rating1 >= rating3):
-        return data.TruckName + ':' + ' ' + result1 
+        return data.TruckName2 + ':' + ' ' + result2 
     elif (rating2 >= rating1) and (rating2 > rating3):
         return data.TruckName2 + ':' + ' ' + result2
     elif (rating3 >= rating1) and (rating3 >= rating2):
-        return data.TruckName3 + ':' + ' ' + result3
+        return data.TruckName2 + ':' + ' ' + result3
     else:
-        return data.TruckName + ':' + ' ' + result1
+        return data.TruckName2 + ':' + ' ' + result2
