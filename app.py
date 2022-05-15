@@ -26,26 +26,26 @@ app.add_middleware(
 
 class request_body(BaseModel):
     TruckName: str
-    Distance_Covered: str
-    Match_of_Route: str
-    Fuel_Consumption: str
-    Body_Characteristics: str
-    Equipment_Sensors: str
-    Efficiency: str
+    Distance_Covered: int
+    Match_of_Route: int
+    Fuel_Consumption: int
+    Body_Characteristics: int
+    Equipment_Sensors: int
+    Efficiency: int
     TruckName2: str
-    Distance_Covered2: str
-    Match_of_Route2: str
-    Fuel_Consumption2: str
-    Body_Characteristics2: str
-    Equipment_Sensors2: str
-    Efficiency2: str
+    Distance_Covered2: int
+    Match_of_Route2: int
+    Fuel_Consumption2: int
+    Body_Characteristics2: int
+    Equipment_Sensors2: int
+    Efficiency2: int
     TruckName3: str
-    Distance_Covered3: str
-    Match_of_Route3: str
-    Fuel_Consumption3: str
-    Body_Characteristics3: str
-    Equipment_Sensors3: str
-    Efficiency3: str
+    Distance_Covered3: int
+    Match_of_Route3: int
+    Fuel_Consumption3: int
+    Body_Characteristics3: int
+    Equipment_Sensors3: int
+    Efficiency3: int
 
 
 # Loading Dataset
@@ -68,64 +68,32 @@ clf.fit(X, Y)
 
 
 @app.post('/predict')
-def predict(data: request_body):
-    
-    # save data.truckname to a variable
-    truckname = data.TruckName
-    truckname2 = data.TruckName2
-    truckname3 = data.TruckName3
-    
-    # check if the data is empty else make it a 0 else convert to int
-    for i in data.__dict__.values():
-        if i == '':
-            i = 0
-    
-    
-    # converting the data to int individually
-    Disatnce_Covered = int(data.Distance_Covered)
-    Match_of_Route = int(data.Match_of_Route)
-    Fuel_Consumption = int(data.Fuel_Consumption)
-    Body_Characteristics = int(data.Body_Characteristics)
-    Equipment_Sensors = int(data.Equipment_Sensors)
-    Efficiency = int(data.Efficiency)
-    Disatnce_Covered2 = int(data.Distance_Covered2)
-    Match_of_Route2 = int(data.Match_of_Route2)
-    Fuel_Consumption2 = int(data.Fuel_Consumption2)
-    Body_Characteristics2 = int(data.Body_Characteristics2)
-    Equipment_Sensors2 = int(data.Equipment_Sensors2)
-    Efficiency2 = int(data.Efficiency2)
-    Disatnce_Covered3 = int(data.Distance_Covered3)
-    Match_of_Route3 = int(data.Match_of_Route3)
-    Fuel_Consumption3 = int(data.Fuel_Consumption3)
-    Body_Characteristics3 = int(data.Body_Characteristics3)
-    Equipment_Sensors3 = int(data.Equipment_Sensors3)
-    Efficiency3 = int(data.Efficiency3)
-    
+def predict(data: request_body):    
     
     # Making the data in a form suitable for prediction
     test_data = [[
-        Disatnce_Covered,
-        Match_of_Route,
-        Fuel_Consumption,
-        Body_Characteristics,
-        Equipment_Sensors,
-        Efficiency
+        data.Disatnce_Covered,
+        data.Match_of_Route,
+        data.Fuel_Consumption,
+        data.Body_Characteristics,
+        data.Equipment_Sensors,
+        data.Efficiency
     ]]
     test_data2 = [[
-        Disatnce_Covered2,
-        Match_of_Route2,
-        Fuel_Consumption2,
-        Body_Characteristics2,
-        Equipment_Sensors2,
-        Efficiency2
+        data.Disatnce_Covered2,
+        data.Match_of_Route2,
+        data.Fuel_Consumption2,
+        data.Body_Characteristics2,
+        data.Equipment_Sensors2,
+        data.Efficiency2
     ]]
     test_data3 = [[
-        Disatnce_Covered3,
-        Match_of_Route3,
-        Fuel_Consumption3,
-        Body_Characteristics3,
-        Equipment_Sensors3,
-        Efficiency3
+        data.Disatnce_Covered3,
+        data.Match_of_Route3,
+        data.Fuel_Consumption3,
+        data.Body_Characteristics3,
+        data.Equipment_Sensors3,
+        data.Efficiency3
     ]]
 
     # Making the prediction
@@ -173,10 +141,10 @@ def predict(data: request_body):
 
     # Return the max rating
     if (rating1 >= rating2) and (rating1 >= rating3):
-        return truckname + ':' + ' ' + result1
+        return data.TruckName + ':' + ' ' + result1
     elif (rating2 >= rating1) and (rating2 > rating3):
-        return truckname2 + ':' + ' ' + result2
+        return data.TruckName2 + ':' + ' ' + result2
     elif (rating3 >= rating1) and (rating3 >= rating2):
-        return truckname3 + ':' + ' ' + result3
+        return data.TruckName3 + ':' + ' ' + result3
     else:
-        return truckname + ':' + ' ' + result1
+        return data.TruckName + ':' + ' ' + result1
