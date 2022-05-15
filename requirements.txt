@@ -8,6 +8,5 @@ uvloop
 pyjwt
 httptools
 pydantic
-flask-cors
 scipy>=0.15.1
 scikit-learn==0.22.1
