@@ -1,5 +1,6 @@
 from sre_parse import State
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.impute import SimpleImputer
 import pandas as pd
@@ -7,6 +8,17 @@ from pydantic import BaseModel
 
 # Creating FastAPI instance
 app = FastAPI()
+
+# CORS
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # creating class to define the request body
 # and the type hints of each attribute
