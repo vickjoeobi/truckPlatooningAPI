@@ -4,9 +4,11 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.impute import SimpleImputer
 import pandas as pd
 from pydantic import BaseModel
+from flask_cors import CORS
 
 # Creating FastAPI instance
 app = FastAPI()
+CORS(app)
 
 # creating class to define the request body
 # and the type hints of each attribute
